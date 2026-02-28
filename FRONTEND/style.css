@@ -1,0 +1,565 @@
+/* style.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* ===== Shared Container Styles (Login, Signup, Forgot) ===== */
+.login-container,
+.signup-container,
+.forgetpassword-container {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    padding: 40px;
+    width: 100%;
+    max-width: 450px;
+    transition: transform 0.3s ease;
+}
+
+.login-container:hover,
+.signup-container:hover,
+.forgetpassword-container:hover {
+    transform: translateY(-5px);
+}
+
+/* Headings */
+.login-container h1,
+.signup-container h1,
+.forgetpassword-container h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 2em;
+    font-weight: 600;
+}
+
+/* Forms */
+.login-form,
+.signup-form,
+.forgetpassword-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Input Box - shared for all auth pages */
+.input-box {
+    position: relative;
+    width: 100%;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 15px 45px 15px 15px;
+    border: 1px solid #d1d1d1; /* Reduced from 2px to 1px */
+    border-radius: 10px; /* Slightly smaller radius for tighter look */
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background: #f8f9fa;
+}
+
+.input-box input:focus {
+    outline: none;
+    border-color: #667eea;
+    border-width: 1px; /* Keep border thin on focus */
+    background: white;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1); /* Slightly smaller shadow spread */
+}
+
+/* Password toggle eye icon */
+.toggle-password {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    user-select: none;
+    font-size: 1.2rem;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+}
+
+.toggle-password:hover {
+    opacity: 1;
+}
+
+/* Remember me checkbox */
+.remember {
+    display: flex;
+    align-items: center;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+.remember input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    accent-color: #667eea;
+    cursor: pointer;
+}
+
+/* Buttons (primary) */
+.btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 10px; /* Reduced from 12px to 10px for consistency */
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    letter-spacing: 0.5px;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+/* Social login buttons (Google/Facebook) */
+.google_facebook {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 10px 0;
+}
+
+.google-btn,
+.facebook-btn {
+    background: white;
+    border: 1px solid #d1d1d1; /* Reduced from 2px to 1px */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.google-btn:hover,
+.facebook-btn:hover {
+    border-color: #667eea;
+    border-width: 1px; /* Keep border thin */
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+}
+
+/* Links and text */
+.paragraph {
+    text-align: center;
+    color: #777;
+    margin: 10px 0;
+    position: relative;
+}
+
+.login-link,
+.signup,
+.forget-password {
+    text-align: center;
+    margin-top: 20px;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.login-link a,
+.signup a,
+.forget-password a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.login-link a:hover,
+.signup a:hover,
+.forget-password a:hover {
+    color: #764ba2;
+    text-decoration: underline;
+}
+
+/* Password strength indicator (signup page) */
+.strength-container {
+    width: 100%;
+    height: 8px;
+    background: #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 5px 0;
+}
+
+.strength-bar {
+    height: 100%;
+    width: 0;
+    transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+#strength-text {
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+    color: #555;
+    text-align: left;
+}
+
+/* ===== Dashboard Specific Styles ===== */
+#header {
+    text-align: center;
+    margin-bottom: 30px;
+    color: white;
+}
+
+#header h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#header hr {
+    border: none;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.3);
+    margin: 20px auto;
+    width: 80%;
+}
+
+#email-form {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    width: 100%;
+    max-width: 700px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    margin-bottom: 30px;
+}
+
+#email-form h2 {
+    color: #333;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: #444;
+    font-size: 1rem;
+    margin-bottom: 8px;
+    display: inline-block;
+}
+
+.form-group input[type="text"],
+.form-group textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #d1d1d1; /* Reduced from 2px to 1px */
+    border-radius: 10px; /* Slightly smaller for dashboard fields too */
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background: #f8f9fa;
+    resize: vertical;
+}
+
+.form-group input[type="text"]:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #667eea;
+    border-width: 1px; /* Keep border thin */
+    background: white;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-group button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 10px; /* Reduced from 12px to 10px */
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+    width: auto;
+    min-width: 200px;
+}
+
+.form-group button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+}
+
+#analysis-result {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    width: 100%;
+    max-width: 700px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    margin: 30px 0;
+}
+
+#analysis-result h2 {
+    color: #333;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    font-weight: 600;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 15px;
+}
+
+.result-item {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.result-item strong {
+    color: #444;
+    min-width: 120px;
+    display: inline-block;
+}
+
+.result-item span,
+.result-item p {
+    color: #555;
+    display: inline;
+}
+
+.result-item p {
+    margin-top: 8px;
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 10px; /* Slightly smaller radius for consistency */
+    border-left: 4px solid #667eea;
+    display: block;
+    width: 100%;
+}
+
+#footer {
+    margin-top: 30px;
+    text-align: center;
+}
+
+#footer a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 10px 25px;
+    border: 2px solid white;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+#footer a:hover {
+    background: white;
+    color: #667eea;
+    transform: scale(1.05);
+}
+
+/* Utility and responsive adjustments */
+hr {
+    border: none;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.3);
+    margin: 20px 0;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    .login-container,
+    .signup-container,
+    .forgetpassword-container,
+    #email-form,
+    #analysis-result {
+        padding: 25px;
+    }
+
+    #header h1 {
+        font-size: 1.6rem;
+    }
+
+    .result-item strong {
+        min-width: 100px;
+    }
+
+    .form-group button {
+        width: 100%;
+    }
+}
+
+/* Additional small tweaks for consistency */
+#spam-status,
+#risk-score,
+#category {
+    font-weight: 600;
+    color: #667eea;
+}
+
+#spam-status {
+    text-transform: uppercase;
+}
+
+/* fallback for svg if needed */
+img.icon {
+    display: block;
+}
+#history-section {
+    max-width: 700px;
+    margin: 20px auto;
+}
+
+.history-item {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.history-item:hover {
+    background: #f5f5f5;
+}
+
+.history-item.spam {
+    border-left: 4px solid #F44336;
+}
+
+.history-item.legitimate {
+    border-left: 4px solid #4CAF50;
+}
+
+.history-item.suspicious {
+    border-left: 4px solid #FFC107;
+}
+
+.history-date {
+    font-size: 0.8rem;
+    color: #888;
+}
+
+.history-subject {
+    font-weight: 600;
+    margin: 5px 0;
+}
+
+.history-confidence {
+    font-size: 0.9rem;
+}
+/* Add to existing style.css */
+
+/* Loading states */
+.btn.loading {
+    position: relative;
+    color: transparent !important;
+}
+
+.btn.loading::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 50%;
+    left: 50%;
+    margin-left: -8px;
+    margin-top: -8px;
+    border: 2px solid white;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spinner 0.6s linear infinite;
+}
+
+@keyframes spinner {
+    to { transform: rotate(360deg); }
+}
+
+/* Result status colors */
+.low-risk #spam-status {
+    color: #4CAF50;
+}
+
+.medium-risk #spam-status {
+    color: #FFC107;
+}
+
+.high-risk #spam-status {
+    color: #F44336;
+}
+
+/* Error messages */
+.error-message {
+    background: #ffebee;
+    color: #c62828;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 10px 0;
+    border-left: 4px solid #c62828;
+}
+
+.success-message {
+    background: #e8f5e9;
+    color: #2e7d32;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 10px 0;
+    border-left: 4px solid #2e7d32;
+}
+
+/* History section */
+.history-stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #667eea;
+}
+
+.stat-label {
+    color: #666;
+    font-size: 0.9rem;
+}

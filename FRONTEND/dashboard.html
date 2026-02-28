@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard - AI Email Threat Detector</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="image/LOGO.png" type="image/png">
+</head>
+<body>
+
+<!-- Header -->
+<div id="header">
+    <h1>Welcome to AI Email Threat Detection Dashboard</h1>
+    <hr>
+</div>
+
+<!-- Email Analysis Form -->
+<div id="email-form">
+    <h2>Check Email for Spam / Phishing</h2>
+    <form action="" method="post">
+        <div class="form-group">
+            <label>Email Subject:</label><br>
+            <input type="text" name="subject" size="60" required>
+        </div>
+        <br>
+        <div class="form-group">
+            <label>Email Content:</label><br>
+            <textarea name="content" rows="8" cols="60" required></textarea>
+        </div>
+        <br>
+        <div class="form-group">
+            <button type="submit">Analyze Email</button>
+        </div>
+    </form>
+</div>
+
+<hr>
+
+<!-- Analysis Result Section -->
+<div id="analysis-result">
+    <h2>Analysis Result</h2>
+    <div class="result-item">
+        <strong>Spam Status:</strong> <span id="spam-status">--</span>
+    </div>
+    <div class="result-item">
+        <strong>Risk Score:</strong> <span id="risk-score">--</span>
+    </div>
+    <div class="result-item">
+        <strong>Category:</strong> <span id="category">--</span>
+    </div>
+    <div class="result-item">
+        <strong>Explanation:</strong>
+        <p id="explanation">--</p>
+    </div>
+    <!-- Add after the analysis result section -->
+<div id="history-section" style="margin-top: 30px; background: white; border-radius: 20px; padding: 20px;">
+    <h3>Recent Analyses</h3>
+    <div id="recent-history">
+        <!-- History items will be loaded here -->
+        <p>Loading history...</p>
+    </div>
+</div>
+
+</div>
+
+<hr>
+
+<!-- Footer / Logout -->
+<div id="footer">
+    <a href="login.html">Logout</a>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
