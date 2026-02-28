@@ -1,4 +1,5 @@
 AI Email Threat Detector System
+
 📌 Overview
 
 The AI Email Threat Detector System is a machine learning-based web application that detects and classifies emails as Spam, Phishing, or Safe (Legitimate). The system analyzes email content using Natural Language Processing (NLP) techniques and predicts whether an email contains malicious intent.
